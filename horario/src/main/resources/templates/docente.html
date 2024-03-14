@@ -1,15 +1,71 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-     
-<head th:insert="layout/cabecalho">
-<title>Page Title</title>
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Pagina de Docentes</title>
 </head>
+
 <body>
-<div th:insert="layout/menu"></div>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+	<div th:insert="~{layout/menu}"></div>
 
-<div th:insert="layout/rodape"></div>
+	<form name="salvar_docente" class="form-horizontal" method="post" action="@{/salvar_docente}"
+		th:object="${docenteEntity}">
+
+		<div class="container">
+			<h2>Docente</h2>
+
+
+			<!--começa cadastro de docente -->
+			<div class="container">
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+				<div class="mb-3">
+
+
+					<label for="nome" class="form-label">NOME</label>
+					<input type="text" class="form-control" id="nome" name="nome" required>
+				</div>
+				<div class="mb-3">
+
+
+					<label for="sobrenome" class="form-label">SOBRENOME</label>
+					<input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+				</div>
+				<div class="mb-3">
+
+					<label for= "sobrenome" class="form-label">CPF
+	</label>
+	<input type="text" name="cpf" class="form-control" pattern="/d{11}" minlength="11"
+		placeholder="Digite somente números">
+	</div>
+	<div class="mb-3">
+
+
+		<label for="setor" class="form-label">SETOR</label>
+		<select class="form-select" aria-label="Selecione o setor" id="setor" name="setor" required>
+			<option value="">SELECIONE O SETOR</option>
+			<option th:each="setor : ${setores}" th:text="${setor.nome}" th:value="${setor.idSetor}"></option>
+
+		</select>
+	</div>
+	<div class="mb-3">
+		<label for="email" class="form-label">EMAIL</label>
+		<input type="email" class="form-control" id="email" name="email" placeholder="chiforinfolo@faetec.br" required>
+	</div>
+	<div class="mb-3">
+		<button type="submit" class="btn btn-sucess form-control"> SALVAR</button>
+	</div>
+	</div>
+	<!--TERMINA CADASTRO DO DOCENTE -->
+	</form>
+
+
+
+
+	<div th:insert="~{layout/rodape}"></div>
+
 </body>
+</option>
+
 </html>
+</form>

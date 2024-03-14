@@ -12,7 +12,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "setor", schema = "hoarario")
+@Table (name = "Docente", schema = "hoarario")
 public class DocenteEntity  implements Serializable {
 	private static final long SerialVersionUID = 1L;
 	@Id
