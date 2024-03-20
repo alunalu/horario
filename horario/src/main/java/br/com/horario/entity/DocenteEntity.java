@@ -12,9 +12,13 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "Docente", schema = "hoarario")
+@Table (name = "docente", schema = "horario")
 public class DocenteEntity  implements Serializable {
-	private static final long SerialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id_docente")

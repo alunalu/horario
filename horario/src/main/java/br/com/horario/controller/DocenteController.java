@@ -26,7 +26,7 @@ public class DocenteController {
    @GetMapping("/docente") // nome que eu quiser colocar
    public String docente (ModelMap model)
    {
-	   model.addAttribute("docente",docenteService.findAnll());
+	   model.addAttribute("docentes",docenteService.findAnll());
 	   model.addAttribute("setores",setorService.finAll());
 	   return "docente"; //caminho real do arquivo 
    }
