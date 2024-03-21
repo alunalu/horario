@@ -55,7 +55,7 @@
 						placeholder="chiforinfolo@faetec.br" required>
 				</div>
 				<div class="mb-3">
-					<button type="submit" class="btn btn-sucess form-control"> SALVAR</button>
+					<button type="submit" class="btn btn-success form-control"> SALVAR</button>
 				</div>
 			</div>
 			<!--TERMINA CADASTRO DO DOCENTE -->
@@ -63,43 +63,49 @@
 		</div>
 		<!--começa lista de docente-->
 		<br>
+		<div class="container">
+			
+		
 		<h5 class="card-title"> Docente cadastrados</h5>
 		<table class="table table-sn table-striped table-hover table-bordered">
 			<thead>
 				<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Setor</th>
-				<th>Email</th>
-				<th class="col-1"></th>
-				<th class="col-1"></th>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Setor</th>
+					<th>Email</th>
+					<th class="col-1"></th>
+					<th class="col-1"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="docente : ${docentes}">
 					<td th:text="${docente.IdDocente}"></td>
-					<td th:text="${docente.Nome +'' + docente.sobrenome}"></td>
+					<td th:text="${docente.Nome + ' ' + docente.sobrenome}"></td>
 					<td th:text="${docente.setor.nome}"></td>
 					<td th:text="${docente.email}"></td>
-					<td><a class="btn btn-sn btn-warnig" href="@{alterar_docente/idDocente{idDocente}(idDocente=${docente.IdDocente})}">Alterar</a></td>
+					<td><a class="btn btn-sn btn-warning"
+							href="@{alterar_docente/idDocente{idDocente}(idDocente=${docente.IdDocente})}">Alterar</a>
+					</td>
 					<!--Começa a excluir-->
 					<td>
 						<a class="delete btn btn-sm btn-danger"
-						th:href="@{excluir_docente/{idDocente}(idDocente=${docente})}"
-						onclick="if(confirm('Deseja realmente excluir o docente?')){return true;}else{event.stopPropagation();event.preventDefault();};">
-						Excluir
+							th:href="@{excluir_docente/{idDocente}(idDocente=${docente.idDocente})}"
+							onclick="if(confirm('Deseja realmente excluir o docente?')){return true;}else{event.stopPropagation();event.preventDefault();};">
+							Excluir
 						</a>
-							
+
 					</td>
 					<!--Termina Exclusão-->
-				</tr> 
-				</tbody>
+				</tr>
+			</tbody>
 		</table>
-				</form>
+		</div>
+	</form>
 
 
 
-					<div th:insert="~{layout/rodape}"></div>
+	<div th:insert="~{layout/rodape}"></div>
 
 </body>
 </option>

@@ -49,4 +49,18 @@ public String save(DocenteEntity docenteEntity) throws Exception {
 		return docenteRepository.getOneByIdDocente(idDocente);
 	}
 
+	@Override
+	public String deleteById(Long idDocente) throws Exception {
+		try 
+		{
+		docenteRepository.deleteById(idDocente);
+		this.mensagem = "Docente excluído com sucesso.";
+		
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		return mensagem;
+	}
+
+
 }

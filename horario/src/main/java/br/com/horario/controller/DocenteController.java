@@ -46,16 +46,23 @@ public class DocenteController {
    
    @GetMapping("/alterar_docente/{idDocente}")
    public ModelAndView update(ModelMap model,@PathVariable("idDocente")Long idDocente)throws Exception {
-	   {
+	   
 		   ModelAndView mv = new ModelAndView("alterar_docente");
 			 model.addAttribute("setores", setorService.finAll());
 			 model.addAttribute("idDocente", idDocente);
 			 model.addAttribute("docente",docenteService.getOneByIdDocente(idDocente));
 		      return mv;		   
+		      }
+	   @GetMapping("/excluir_docente/{idDocente}")
+	   public ModelAndView delete(ModelMap model, @PathVariable("idDocente") Long idDocente, RedirectAttributes atributes) throws Exception {
+		   ModelAndView mv = new ModelAndView("docente");
+		   model.addAttribute("setores", setorService.finAll());
+		   model.addAttribute("mensagem", docenteService.deleteById(idDocente));
+		   model.addAttribute("docentes", docenteService.findAnll());
+		   return mv; 
 	   }
-   }
-   
-   
+
+  
 }
 
 
