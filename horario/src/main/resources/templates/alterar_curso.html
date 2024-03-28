@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Alteração de Curso</title>
+</head>
+
+<body>
+	<div th:insert="~{layout/menu}"></div>
+
+	<form name="alterar_curso" class="form-horizontal" method="post" th:action="@{/alterar_curso}"
+		th:object="${cursoEntity}">
+		<div class="container">
+			<h2>Curso</h2>
+
+			<!--Começa cadastro de Curso -->
+			<div class="container">
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+
+				<input class="form-control" type="hidden" maxlength="50" name="idCurso" th:value="${idCurso}">
+				<div class="mb-3">
+					<label for="nome" class="form-label">Nome</label>
+					<input type="text" class="form-control" id="nome" name="nome" th:value="${curso.Nome}" required>
+				</div>
+				
+				<div class="mb-e">
+					<button type="submit" class="btn btn-success form-control">Salvar</button>
+				</div>
+			</div>
+			<!-- Termina cadastro de curso -->
+		</div>
+	</form>
+
+	<div th:insert="~{layout/rodape}"></div>
+
+</body>
+
+</html>

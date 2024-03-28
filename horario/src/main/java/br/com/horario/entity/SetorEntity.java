@@ -13,7 +13,11 @@ import jakarta.persistence.Table;
 @Table (name = "setor", schema = "hoarario")
 public class SetorEntity  implements Serializable {
 
-	private static final long SerialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 			@Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
 	        @Column (name = "id_setor")

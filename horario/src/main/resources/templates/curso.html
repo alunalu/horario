@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Pagina de Curso</title>
+</head>
+
+<body>
+
+	<div th:insert="~{layout/menu}"></div>
+
+	<form name="salvar_curso" class="form-horizontal" method="post" th:action="@{/salvar_curso}"
+		th:object="${cursoEntity}">
+
+		<div class="container">
+			<h2>Curso</h2>
+
+
+			<!--começa cadastro de curso -->
+			<div class="container">
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+				<div class="mb-3">
+
+
+					<label for="nome" class="form-label">NOME</label>
+					<input type="text" class="form-control" id="nome" name="nome" required>
+				</div>
+				<div class="mb-3">
+
+
+				</div>
+				<div class="mb-3">
+					<button type="submit" class="btn btn-success form-control"> SALVAR</button>
+				</div>
+			</div>
+			<!--TERMINA CADASTRO DO CURSO -->
+
+		</div>
+		<!--começa lista de curso-->
+		<br>
+		<div class="container">
+			
+		
+		<h5 class="card-title"> Curso cadastrados</h5>
+		<table class="table table-sn table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					
+					<th class="col-1"></th>
+					<th class="col-1"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="curso : ${cursos}">
+					<td th:text="${curso.IdCurso}"></td>
+					<td th:text="${curso.Nome}"></td>
+					<td><a class="btn btn-sn btn-warning" th:href="@{alterar_curso/{idCurso}(idCurso=${curso.IdCurso})}">Alterar</a></td>
+					<!--Começa a excluir-->
+					<td>
+						<a class="delete btn btn-sm btn-danger"
+							th:href="@{excluir_curso/{idCurso}(idCurso=${curso.idCurso})}"
+							onclick="if(confirm('Deseja realmente excluir o curso?')){return true;}else{event.stopPropagation();event.preventDefault();};">
+							Excluir
+						</a>
+
+					</td>
+					<!--Termina Exclusão-->
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</form>
+
+
+
+	<div th:insert="~{layout/rodape}"></div>
+
+</body>
+</option>
+
+</html>
+</form>

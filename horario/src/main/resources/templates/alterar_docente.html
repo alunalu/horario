@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Alteração de Docente</title>
+</head>
+
+<body>
+	<div th:insert="~{layout/menu}"></div>
+
+	<form name="alterar_docente" class="form-horizontal" method="post" th:action="@{/alterar_docente}"
+		th:object="${docenteEntity}">
+		<div class="container">
+			<h2>Docente</h2>
+
+			<!--Começa cadastro de docentes -->
+			<div class="container">
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+
+				<input class="form-control" type="hidden" maxlength="50" name="idDocente" th:value="${idDocente}">
+				<div class="mb-3">
+					<label for="nome" class="form-label">Nome</label>
+					<input type="text" class="form-control" id="nome" name="nome" th:value="${docente.Nome}" required>
+				</div>
+				<div class="mb-3">
+					<label for="sobrenome" class="form-label">Sobrenome</label>
+					<input type="text" class="form-control" id="sobrenome" name="sobrenome" th:value="${docente.Sobrenome}" required>
+				</div>
+				<div class="mb-3">
+					<label for="sobrenome" class="form-label">Cpf</label>
+					<input type="text" name="cpf" class="form-control" th:value="${docente.cpf}" pattern="\d{11}" maxlength="11" minlength="11"
+						placeholder="Digite somente números">
+				</div>
+				<div class="mb-e">
+					<label for="setor" class="form-label">Setor</label>
+					<select class="form-select" aria-label="Selecione o setor" id="setor" name="setor" required>
+						<option value="">Selecione o setor</option>
+						<option th:each="setor : ${setores}" th:text="${setor.nome}" th:value="${setor.idSetor}" th:selected="${setor.idSetor == docente.setor.idSetor}">
+						</option>
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control" id="email" name="email" th:value="${docente.email}"
+						placeholder="chinforinfolo@faetec.br" required>
+				</div>
+				<div class="mb-e">
+					<button type="submit" class="btn btn-success form-control">Salvar</button>
+				</div>
+			</div>
+			<!-- Termina cadastro de docentes -->
+		</div>
+	</form>
+
+	<div th:insert="~{layout/rodape}"></div>
+
+</body>
+
+</html>
